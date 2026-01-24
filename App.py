@@ -1,13 +1,12 @@
 import streamlit as st
-import pandas as pd # Usamos esto para ver tablas bonitas
+import pandas as pd 
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="Gestor IB", page_icon="💰")
 st.title("💰 Gestor de Presupuestos - Proyecto IB")
 
-# --- PASO CRUCIAL: LA MEMORIA (Session State) ---
-# En web, cada vez que tocas un botón, el código se reinicia.
-# "st.session_state" es como una mochila que guarda los datos para que no se borren.
+# --- LA MEMORIA (Session State) ---
+
 
 if 'presupuesto' not in st.session_state:
     st.session_state['presupuesto'] = 0.0
@@ -21,7 +20,7 @@ menu = st.sidebar.selectbox(
     ["Resumen (Balance)", "Registrar Gasto", "Agregar Ingreso"]
 )
 
-# --- OPCIÓN 1: AGREGAR INGRESO (Tu antigua Opción 3) ---
+# --- OPCIÓN 1: AGREGAR INGRESO ---
 if menu == "Agregar Ingreso":
     st.header("💵 Depositar Dinero")
     st.write("Agrega dinero a tu presupuesto inicial o actual.")
@@ -39,7 +38,7 @@ if menu == "Agregar Ingreso":
         else:
             st.error("El monto debe ser mayor a 0.")
 
-# --- OPCIÓN 2: REGISTRAR GASTO (Tu antigua Opción 1) ---
+# --- REGISTRAR GASTO ---
 elif menu == "Registrar Gasto":
     st.header("💸 Registrar un Gasto")
     
@@ -70,7 +69,7 @@ elif menu == "Resumen (Balance)":
     total_gastado = sum(g['costo'] for g in st.session_state['gastos'])
     restante = st.session_state['presupuesto'] - total_gastado
 
-    # Métricas grandes (Se ven muy profesionales)
+    # Métricas 
     col1, col2, col3 = st.columns(3)
     col1.metric("Presupuesto Total", f"${st.session_state['presupuesto']}")
     col2.metric("Total Gastado", f"${total_gastado}", delta=-total_gastado)
@@ -80,7 +79,7 @@ elif menu == "Resumen (Balance)":
 
     st.subheader("Historial de Gastos")
     if len(st.session_state['gastos']) > 0:
-        # Convertimos la lista a una tabla bonita (DataFrame)
+       
         df = pd.DataFrame(st.session_state['gastos'])
         st.dataframe(df, use_container_width=True)
     else:
