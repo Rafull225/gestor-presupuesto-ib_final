@@ -3,7 +3,7 @@ import pandas as pd
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="Gestor IB", page_icon="💰")
-st.title("💰 Gestor de Presupuestos - Proyecto IB")
+st.title("💰 Gestor de Presupuestos")
 
 # --- LA MEMORIA (Session State) ---
 
