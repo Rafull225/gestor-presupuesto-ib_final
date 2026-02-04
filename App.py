@@ -14,13 +14,13 @@ if 'presupuesto' not in st.session_state:
 if 'gastos' not in st.session_state:
     st.session_state['gastos'] = []
 
-# --- BARRA LATERAL (MENU) ---
+# --- MENU ---
 menu = st.sidebar.selectbox(
     "Menú Principal",
     ["Resumen (Balance)", "Registrar Gasto", "Agregar Ingreso"]
 )
 
-# --- OPCIÓN 1: AGREGAR INGRESO ---
+# --- OPCIÓN 1 AGREGAR INGRESO ---
 if menu == "Agregar Ingreso":
     st.header("💵 Depositar Dinero")
     st.write("Agrega dinero a tu presupuesto inicial o actual.")
@@ -42,7 +42,7 @@ if menu == "Agregar Ingreso":
 elif menu == "Registrar Gasto":
     st.header("💸 Registrar un Gasto")
     
-    # Calculamos cuánto hay disponible antes de gastar
+    # Calculo cuánto hay disponible antes de gastar
     total_gastado = sum(g['costo'] for g in st.session_state['gastos'])
     disponible = st.session_state['presupuesto'] - total_gastado
     
@@ -61,7 +61,7 @@ elif menu == "Registrar Gasto":
         else:
             st.warning("Por favor ingresa un monto y un nombre válidos.")
 
-# --- OPCIÓN 3: RESUMEN (Tu antigua Opción 2) ---
+# --- OPCIÓN 3: RESUMEN  ---
 elif menu == "Resumen (Balance)":
     st.header("📊 Balance Financiero")
 
