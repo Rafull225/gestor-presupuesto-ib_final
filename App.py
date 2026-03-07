@@ -22,7 +22,7 @@ menu = st.sidebar.selectbox(
 
 # --- OPCIÓN 1 AGREGAR INGRESO ---
 if menu == "Agregar Ingreso":
-    st.header("💵 Depositar Dinero")
+    st.header("Depositar Dinero")
     st.write("Agrega dinero a tu presupuesto inicial o actual.")
     
     col1, col2 = st.columns(2)
@@ -40,7 +40,7 @@ if menu == "Agregar Ingreso":
 
 # --- REGISTRAR GASTO ---
 elif menu == "Registrar Gasto":
-    st.header("💸 Registrar un Gasto")
+    st.header("Registrar un Gasto")
     
     # Calculo cuánto hay disponible antes de gastar
     total_gastado = sum(g['costo'] for g in st.session_state['gastos'])
@@ -63,7 +63,7 @@ elif menu == "Registrar Gasto":
 
 # --- OPCIÓN 3: RESUMEN  ---
 elif menu == "Resumen (Balance)":
-    st.header("📊 Balance Financiero")
+    st.header("Balance Financiero")
 
     # Cálculos
     total_gastado = sum(g['costo'] for g in st.session_state['gastos'])
